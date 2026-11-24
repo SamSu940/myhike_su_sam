@@ -8,7 +8,8 @@
 
 // Import the initialized Firebase Authentication object
 import { auth } from "/src/firebaseConfig.js";
-
+import { db } from "./firebaseConfig.js";
+import { doc, setDoc } from "firebase/firestore";
 // Import specific functions from the Firebase Auth SDK
 import {
   signInWithEmailAndPassword,
@@ -51,9 +52,22 @@ export async function loginUser(email, password) {
 //   const user = await signupUser("Alice", "alice@email.com", "secret");
 // -------------------------------------------------------------
 export async function signupUser(name, email, password) {
-  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-  await updateProfile(userCredential.user, { displayName: name });
-  return userCredential.user;
+  const userCredential = await createUserWithEmailAndPassword(
+    auth, email, password
+  );
+
+  const user = userCredential.user;
+
+  await updateProfile(user, { displayName: name });
+
+  await setDoc(doc(db, "users", user.uid), {
+    name: name,
+    email: email,
+    country: "Canada",
+    school: "BCIT"
+  });
+
+  return user;
 }
 
 // -------------------------------------------------------------

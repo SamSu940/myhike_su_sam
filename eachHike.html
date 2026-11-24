@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Main | Sam’s MyHike</title>
+    <meta name="comp1800 template" content="My 1800 App">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+</head>
+
+<body>
+    <site-navbar></site-navbar>
+    <main class="container py-4">
+        <h1 id="hikeName">Loading...</h1>
+
+        <img id="hikeImage" class="img-fluid rounded mt-3" alt="Hike image">
+        <p class="mt-2">
+            <span class="badge rounded-pill text-bg-light border fw-normal">
+                <i class="bi bi-eye-fill me-1"></i>
+                <span id="viewCount">0</span> views
+            </span>
+        </p>
+
+        <section class="mt-4">
+            <h2 class="h5">Write a review</h2>
+
+            <form id="reviewForm">
+                <div class="mb-3">
+                    <label for="reviewTitle" class="form-label">Title</label>
+                    <input id="reviewTitle" class="form-control" type="text" placeholder="e.g. Great views!" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="reviewRating" class="form-label">Rating</label>
+                    <select id="reviewRating" class="form-select">
+                        <option value="5">5 – Loved it</option>
+                        <option value="4">4 – Liked it</option>
+                        <option value="3">3 – It was okay</option>
+                        <option value="2">2 – Could be better</option>
+                        <option value="1">1 – Didn't like it</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="reviewText" class="form-label">Review</label>
+                    <textarea id="reviewText" class="form-control" rows="3" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">Submit review</button>
+            </form>
+        </section>
+
+        <section class="mt-4">
+            <h2 class="h5">Latest reviews</h2>
+            <div id="reviews-go-here"></div>
+        </section>
+
+        <template id="reviewTemplate">
+            <article class="border rounded p-3 mb-2">
+                <h3 class="h6 mb-1 review-title"></h3>
+                <p class="small text-muted mb-1 review-meta"></p>
+                <p class="mb-0 review-text"></p>
+            </article>
+        </template>
+
+
+
+        <div class="mt-3">
+            <a href="main.html" class="btn btn-secondary">
+                Back to Hikes
+            </a>
+        </div>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script type="module" src="/src/app.js"></script>
+    <script type="module" src="/src/eachHike.js"></script>
+</body>
+
+</html>

@@ -22,9 +22,37 @@
             </h1>
             <p>You are logged in to Sam’s MyHike.</p>
             <hr>
-            <p>Quote of the day: Every step brings a new adventure.</p>
+            <p>Quote of the day: <span id="quote-goes-here"></span></p>
         </div>
     </div>
+    <section class="container py-4">
+        <a href="./addHike.html" class="btn btn-primary mb-3">
+            ➕ Add a hike
+        </a>
+        <h2>Popular Hikes</h2>
+
+        <div id="hikes-go-here" class="row row-cols-1 row-cols-md-3 g-4">
+        </div>
+    </section>
+
+    <template id="hikeCardTemplate">
+        <div class="col">
+            <div class="card h-100">
+                <img class="card-img-top card-image" alt="Hike image" style="height: 180px; object-fit: cover;">
+                <i class="bi bi-heart text-danger fs-4 fav-btn position-absolute top-0 end-0 m-2" role="button"
+                    title="Favourite"></i>
+
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"></p>
+                    <p>Length: <span class="card-length"></span> km</p>
+                    <a class="btn btn-primary read-more" href="#">
+                        Read More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
 
     <site-footer></site-footer>
 
